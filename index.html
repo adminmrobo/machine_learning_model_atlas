@@ -63,6 +63,8 @@ section.group{margin-top:44px}
 .fig{background:var(--bg);border-radius:8px;padding:10px;overflow:hidden;display:flex;justify-content:center}
 .fig svg{display:block;max-width:100%;height:auto;border-radius:6px}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
+.go3d{align-self:flex-start;margin-top:2px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+.go3d:hover{background:var(--accent-soft)}
 .tags i{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .card p{margin:0;font-size:14px}
 .analogy{color:var(--muted)}
@@ -113,6 +115,7 @@ nav.top .links a:hover{background:var(--accent-soft);color:var(--ink)}
   <p class="lede">선형 회귀부터 부스팅, 군집, 차원 축소까지 자주 만나는 머신러닝 모델 27개를 같은 모눈 위에 모두 그리고, 각각이 무엇을 하는지, 어떤 일에 강하고 약한지 쉬운 말로 풀었습니다.</p>
   <div class="byline">글 · 안상선 ((주)M-Robo 대표) · 2026-11-12</div>
   <p class="essence-note">이 쪽은 <a href="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html">신경망 구조 도감 · 엣센스</a>의 자매편입니다. 신경망 도감이 "배선도"를 그렸다면, 이 도감은 모델이 데이터 위에 "무엇을 긋는지"를 그립니다. 마지막 27번 카드에서 신경망 도감으로 이어집니다.</p>
+  <p class="essence-note">같은 27종을 <b>3D로</b> 돌려 보며 직접 실험하려면 <a href="https://adminmrobo.github.io/machine_learning_in_3d/">머신러닝 연구소 (3D, 27층 건물)</a>로 가십시오. 카드마다 아래의 <b>3D 연구소 ○층에서 보기</b> 단추가 그 모델의 층으로 바로 이어집니다.</p>
 </header>
 
 <div class="intro">
@@ -156,7 +159,7 @@ nav.top .links a:hover{background:var(--accent-soft);color:var(--ink)}
   </table></div>
 </section>
 
-<div class="next"><a href="#top">↑ 맨 위로</a><a href="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html">신경망 구조 도감 · 엣센스 →</a></div>
+<div class="next"><a href="#top">↑ 맨 위로</a><a href="https://adminmrobo.github.io/machine_learning_in_3d/">머신러닝 연구소 (3D) →</a><a href="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html">신경망 구조 도감 · 엣센스 →</a></div>
 <footer>
   이 도감은 특정 원본 차트를 옮긴 것이 아니라, 신경망 구조 도감의 형식을 빌려 고전 머신러닝 모델을 새로 정리한 것입니다. 묶음은 scikit-learn 사용자 안내서의 분류(선형 모델, 이웃, 서포트 벡터 머신, 트리, 앙상블, 군집, 차원 축소)를 따랐습니다. 카드의 연도는 흔히 인용되는 대표 문헌이 나온 해이며, 같은 생각이 그보다 먼저 나온 경우도 많습니다. 그림은 설명을 위해 만든 가상의 점들 위에 새로 그렸고, 실제 학습 결과가 아닙니다.
 </footer>
@@ -286,6 +289,10 @@ function draw(n){const[k,...a]=n.fig;return `<svg viewBox="0 0 ${W} ${H}" width=
 
 /* ---------- 도감 데이터 ---------- */
 const NN="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html";
+/* 3D 머신러닝 연구소(machine_learning_in_3d)의 층 번호. 키는 카드 약어(abbr의 ' · ' 앞) */
+const LAB3D="https://adminmrobo.github.io/machine_learning_in_3d/";
+const FLOOR3D={"LR":1,"kNN":2,"LogR":3,"DT":4,"k-means":5,"NB":6,"Ridge":7,"Lasso":8,"PCA":9,"HAC":10,"LDA":11,"SVM":12,"RF":13,"ET":14,"DBSCAN":15,"AdaBoost":16,"iForest":17,"GMM":18,"Kernel SVM":19,"GBM":20,"XGB":21,"LGBM":22,"CatBoost":23,"GP":24,"t-SNE":25,"UMAP":26,"MLP":27};
+const fl3d=n=>FLOOR3D[n.abbr.split(" · ")[0]];
 const GROUPS=[
  {id:"linear",nav:"선형",t:"선형 모델",d:"데이터에 직선(변수가 많으면 평면) 하나를 긋는다. 가장 오래됐고 지금도 모든 비교의 기준선이다.",items:[
   {name:"선형 회귀",abbr:"LR · 1805",fig:["lr"],task:["회귀"],what:"점들과 직선 사이의 세로 거리(오차)를 제곱해 모두 더한 값이 가장 작아지는 직선을 긋는다.",an:"흩어진 못들 사이로 가장 덜 휘청이는 자리에 막대 하나를 걸쳐 놓는 것.",good:"숫자 예측의 기준선, 계수로 변수의 영향 크기를 바로 읽는다",bad:"곡선 관계는 못 담고, 멀리 튄 점(이상치) 하나에 선이 끌려간다",r:[1,5,5,4]},
@@ -347,6 +354,7 @@ document.getElementById("groups").innerHTML=GROUPS.map(g=>`
   <p class="uses"><span>약점</span>${n.bad}</p>
   ${n.hidden?`<div class="hidden-diff"><b>그림에 안 보이는 차이</b> · ${n.hidden}</div>`:""}
   ${bars(n.r)}
+  ${fl3d(n)?`<a class="go3d" href="${LAB3D}floors/?f=${fl3d(n)}">3D 연구소 ${fl3d(n)}층에서 보기 →</a>`:""}
 </article>`).join("")}</div></section>`).join("");
 
 document.getElementById("navlinks").innerHTML=GROUPS.map(g=>`<a href="#${g.id}">${g.nav}</a>`).join("")+`<a href="#pick">한눈에 고르기</a>`;
