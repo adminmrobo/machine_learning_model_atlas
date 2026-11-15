@@ -134,7 +134,7 @@ nav.top .links a:hover{background:var(--accent-soft);color:var(--ink)}
       <li><b>다루기 쉬움</b> 초보자가 기본 설정으로 돌려도 잘 나오나</li>
       <li><b>요즘 활용도</b> 2026년 현업·연구에서 얼마나 쓰이나</li>
     </ul>
-    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">별점은 같은 조건을 가정한 상대 평가입니다. 실제 성능은 데이터와 문제에 따라 크게 달라집니다.</p>
+    <p style="font-size:12.5px;color:var(--muted);margin:8px 0 0">별점은 지정된 조건에서 모델의 특징을 비교하는 교육용 판단입니다. 정확도 순위나 산업 사용률 통계가 아닙니다. 요즘 활용도는 근거 자료를 모으기 전의 정성 초안입니다. <a href="criteria.html">판단 기준 별지 →</a></p>
   </div>
 </div>
 
@@ -159,7 +159,7 @@ nav.top .links a:hover{background:var(--accent-soft);color:var(--ink)}
   </table></div>
 </section>
 
-<div class="next"><a href="#top">↑ 맨 위로</a><a href="https://adminmrobo.github.io/machine_learning_in_3d/">머신러닝 연구소 (3D) →</a><a href="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html">신경망 구조 도감 · 엣센스 →</a></div>
+<div class="next"><a href="#top">↑ 맨 위로</a><a href="criteria.html">별점 판단 기준 (별지) →</a><a href="https://adminmrobo.github.io/machine_learning_in_3d/">머신러닝 연구소 (3D) →</a><a href="https://adminmrobo.github.io/neural_network_atlas/0_neural_network_essence.html">신경망 구조 도감 · 엣센스 →</a></div>
 <footer>
   이 도감은 특정 원본 차트를 옮긴 것이 아니라, 신경망 구조 도감의 형식을 빌려 고전 머신러닝 모델을 새로 정리한 것입니다. 묶음은 scikit-learn 사용자 안내서의 분류(선형 모델, 이웃, 서포트 벡터 머신, 트리, 앙상블, 군집, 차원 축소)를 따랐습니다. 카드의 연도는 흔히 인용되는 대표 문헌이 나온 해이며, 같은 생각이 그보다 먼저 나온 경우도 많습니다. 그림은 설명을 위해 만든 가상의 점들 위에 새로 그렸고, 실제 학습 결과가 아닙니다.
 </footer>
@@ -357,7 +357,7 @@ document.getElementById("groups").innerHTML=GROUPS.map(g=>`
   ${fl3d(n)?`<a class="go3d" href="${LAB3D}floors/?f=${fl3d(n)}">3D 연구소 ${fl3d(n)}층에서 보기 →</a>`:""}
 </article>`).join("")}</div></section>`).join("");
 
-document.getElementById("navlinks").innerHTML=GROUPS.map(g=>`<a href="#${g.id}">${g.nav}</a>`).join("")+`<a href="#pick">한눈에 고르기</a>`;
+document.getElementById("navlinks").innerHTML=GROUPS.map(g=>`<a href="#${g.id}">${g.nav}</a>`).join("")+`<a href="#pick">한눈에 고르기</a><a href="criteria.html">판단 기준(별지)</a>`;
 
 const sw=(inner)=>`<svg width="22" height="22" viewBox="0 0 22 22">${inner}</svg>`;
 document.getElementById("legend").innerHTML=[
