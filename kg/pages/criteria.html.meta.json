@@ -1,0 +1,33 @@
+{
+ "title": "별지 · 도감 별점의 판단 기준",
+ "number": "01",
+ "series": "머신러닝 모델 도감 · 엣센스",
+ "date": "2026-11-24",
+ "version": "1.1",
+ "creator": [
+  {
+   "name": "안상선",
+   "role": "author"
+  }
+ ],
+ "contributor": [
+  {
+   "name": "AI 보조 제작",
+   "role": "assistant"
+  }
+ ],
+ "about": [
+  "lab:metric/accuracy",
+  "lab:method/logistic-regression",
+  "lab:method/svm",
+  "lab:concept/decision-tree",
+  "lab:method/knn"
+ ],
+ "basedOn": [],
+ "educationalLevel": "입문~중급",
+ "license": "",
+ "url": "https://adminmrobo.github.io/machine_learning_model_atlas/criteria.html",
+ "registry": "KG_00_registry 0.3",
+ "seeAlso": "",
+ "suggestedCitation": "안상선 (2026). 별지 · 도감 별점의 판단 기준. 머신러닝 모델 도감 · 엣센스, v1.1."
+}
